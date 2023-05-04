@@ -8,7 +8,13 @@ A drone is an unmanned aircraft or ship that is guided remotely or autonomously 
 
 # References 
 
+## Basics
 * https://www.identifiedtech.com/blog/uav-surveying/drone-technology-ending-the-drone-vs-uav-debate-drone-basics-101/#:~:text=A%20drone%20is%20an%20unmanned,named%20for%20it's%204%20propellers.
+
+## IMU sensor
+* 
+
+## Pixhawk
 * https://ardupilot.org/copter/docs/common-px4fmu-overview.html
 * https://docs.px4.io/main/en/flight_controller/pixhawk_series.html
 * https://robotics.stackexchange.com/questions/5053/why-does-the-pixhawk-have-2-imus#:~:text=This%20is%20because%20the%20chances,IMUs%20all%20of%20different%20brands
