@@ -21,23 +21,49 @@ Addition of the magentometer it a 9-axis IMU, or else it can be considered as a 
 
 ### Accelerometer
 
+An accelerometer measures proper linear acceleration. Proper acceleration is the physical acceleration as experienced by an object in its own instantaneous rest frame, which is different from the acceleration in a fixed coordinate frame. An accelerometer at rest on the table will measure +1g upwards, away from the center of the earth. If the accelerometer is in free fall, it will measure zero acceleration.
+
+Accelerometers are used to monitor vibrations in rotating machines and in inertial navigation systems. 
+
+Two accelerometers coordinated with each other can measure differences in proper acceleration, depending on their separation, thus the gradient of the gravitational field. 
+
 ![alt text](https://www.digikey.com/en/articles/~/media/Images/Article%20Library/TechZone%20Articles/2011/May/Using%20An%20Accelerometer%20for%20Inclination%20Sensing/TZS111_Using_An_Fig_10.jpg)
 
+### Gyroscope
+
+A gyroscope is a device that uses Earth's gravity to help determine orientation. Gyro sensors are devices that sense angular velocity which is the change in rotational angle per unit of time. 3-axis gyroscopes are often implemented with a 3-axis accelerometer to provide a full DoF motion tracking system. 
+
+For example, a gyroscope could be used in an aircraft to help indicate the rate of rotation around the aircraft roll axis. When the aircraft comes to rest rotationally, the gyroscope reading will become zero. The gyroscope reading stays non-zero only as long as there is rotational motion and will be non-zero only in the axes around which the rotational motion is taking place.
+
+Guided missiles use gyroscopes to track and guide their courses.
+
+### Magnetometer
+
+Magnetometers allow measurement of strength and sometimes direction of magnetic field at a point in space. Magnetometers are also used to calibrate electromagnets and permanent magnets and to determine the magnetization of materials. 
+
+They are used to measure the Earth's magnetic field in geographical surveys, metals/weapons detectors etc.
 
 ## Inertial Navigation System (INS)
+
 Also known as Inertial Guidance System, used in UAVs, USVs and UGVs.
 
-Inertial Navigation is a self-referential method by which a system may track its own position, orientation and velocity (once the initial values for these parameters are provided) without the need of external refernces liek landmarks, celestial objects, satellites etc.
+Inertial Navigation is a self-referential method by which a system may track its own position, orientation and velocity (once the initial values for these parameters are provided) without the need of external references like landmarks, celestial objects, satellites etc.
 
 For instance, if the acceleration of a body is known, mathematical integration will give the velocity. In this manner, accelerometers can be used for inertial navigation.
 
-The orientation of the system can be tracked using gyroscopes, which measure angular rate (change in angular velocity). 
+At least three orthogonal rate-gyros and three orthogonal accelerometers are used and are used to derive a navigation solution. This navigation solution contains atleast the position (latitude and longitude).
+
+A rate-gyro measures rate of change of angle with time instead of the direction
+
+The orientation of the system can be tracked using gyroscopes, which measure angular rate (change in angular velocity). This angular rate is integrated to track the angular position of the system.
 
 Magnetometers can be used to measure the strength and direction of the earth's magnetic field, and can be used to calculate the system yaw and heading.
 
-![alt text](https://www.researchgate.net/publication/348803228/figure/fig7/AS:984434408955905@1611718861641/a-Pitch-yaw-and-roll-angles-of-an-aircraft-with-body-orientation-O-u-v-original.ppm)
+INS are autonomous after initialization and do not rely on satellites like GPS systems. They are also resistant to external radiation and jamming to a great extent.
 
+But INS provide accurate solutions for a short period of time. As the acceleration is intergrated twice to obtain position, the error also gets integrated and accumulates over time.
 
+![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yaw_Axis_Corrected.svg/375px-Yaw_Axis_Corrected.svg.png)
 
 ## References 
 
@@ -45,13 +71,24 @@ Magnetometers can be used to measure the strength and direction of the earth's m
 * https://www.identifiedtech.com/blog/uav-surveying/drone-technology-ending-the-drone-vs-uav-debate-drone-basics-101/#:~:text=A%20drone%20is%20an%20unmanned,named%20for%20it's%204%20propellers.
 
 ### IMU sensor
+* https://www.youtube.com/watch?v=M9lZ5Qy5S2s
 * https://www.unmannedsystemstechnology.com/expo/inertial-measurement-units-imu/#:~:text=An%20IMU%20(inertial%20measurement%20unit,to%20calculate%20position%20and%20velocity.
 * 
+
 #### Accelerometer
 * https://www.digikey.com/en/articles/using-an-accelerometer-for-inclination-sensing
-* 
+* https://en.wikipedia.org/wiki/Accelerometer
+
+#### Gyroscope
+* https://www.youtube.com/watch?v=MAR4yvxQpzc
+* https://in.element14.com/sensor-gyroscope-technology#:~:text=A%20gyroscope%20is%20a%20device,s%20(degrees%20per%20second)
+
+#### Magnetometer
+* https://www.britannica.com/technology/magnetometer
 
 ### INS
+* https://www.vectornav.com/resources/inertial-navigation-articles/what-is-an-ins
+* https://www.sciencedirect.com/topics/engineering/inertial-navigation-system
 * https://www.smlease.com/entries/mechanical-design-basics/what-is-the-difference-between-roll-pitch-yaw-aircraft-motions/
 * https://www.researchgate.net/figure/a-Pitch-yaw-and-roll-angles-of-an-aircraft-with-body-orientation-O-u-v-original_fig7_348803228
 * 
