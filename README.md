@@ -103,6 +103,8 @@ The Extended Kalman Filter simply adds a step to the preprocessing before giving
 
 Pixhawk is an independent open-hardware project providing autopilot designs that are readily available, low-cost and high-end in nature. 
 
+AN autopilot is a system with the capabiltiy of controlling roll, pitch, yaw of UAV. It is also capable of maintaining the altitude of the UAV automatically.
+
 It basically is a series of dedicated flight controllers for UAVs. It brings together the different components needed to run open-source software for a drone into a box. It behaves like the Arduino of drones.
 
 Some advantages of using a Pixhawk controller include: 
@@ -120,13 +122,14 @@ A flight controller behaves as the brain of the drone. It monitors and controls 
 Generally a Pixhawk controller is mounted with two or more different IMU sensors, of different brands.
 
 ![alt text](px_imu.png)
-Spec of the Holybro Pixhawk 4
+
+From the spec of CUAV Pixhawk V6X (https://docs.px4.io/main/en/flight_controller/cuav_pixhawk_v6x.html)
 
 This is done for some of the followng reasons:
 * Better Reliability: Sensors with similar functions but different build will give varied errors. Fusing data from such sensors can improve the reliablity of the final output obtained.
 * Safety and Backup: In case one of the sensors fails during flight, data from the other sensor can be used as a backup.
 * Power Consumption: If one of the sensors is a high-precision sensor, it may consume more power. So it can be switched on when required and switched off during low power.
-* Error Accumultion: Due to vibrations of the drone, data from sensors like accelerometers is affected and integration leads to buildup of error (or dc offset). It is helpful to use mutilple sensors in such cases and different sampling frequency in each.
+* Error Accumulation: Due to vibrations of the drone, data from sensors like accelerometers is affected and integration leads to buildup of error (or dc offset). It is helpful to use mutilple sensors in such cases and different sampling frequency in each.
 
 
 Data from the multiple IMUs is fused using EKF in Pixhawk flight controllers and used to estimate its position.
@@ -134,18 +137,37 @@ Data from the multiple IMUs is fused using EKF in Pixhawk flight controllers and
 There is also some research into the use of mutliple IMUs and seemingly redundant data to improve the position estimation in GPS-denied INS (aka dead-reckoning navigation).
 
 * https://link.springer.com/article/10.1007/s12206-022-1216-1
+
 This research paper proposes a method to integrate signals from multiple accelerometers with different resolutions and reduce the error using a weighted average.
 
 * https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9686719
+
 A presentation of multiple variants of the Kalman Filtering technique to use measurements from multiple IMUs. It builds upon the common standard, EKF applied to IMU measurements.
 
-* https://www.researchgate.net/publication/333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
+* https://www.researchgate.net/publication/
+
+333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
 This research paper presents the quantitative improvement of the latiitude, longitude and altitude values with the use of multiple IMU sensors in a GPS-denied environment.
 
+### Specs - CUAV Pixhawk V6X
+
+Some basic hardware specs of latest Pixhawk flight controller, CUAV Pixhawk V6X:
+* FMU Processor - 32-bit Arm Cortex-M7, 480MHz, 2MB flash memory, 1MB RAM
+    * Handles sensor data processing, communication interfaces
+* IO Processor - 
+    * 
+
+
+![alt text](https://docs.px4.io/main/assets/img/pixhawk_v6x.48f2ab45.jpg)
 
 ## Mission Planner for UAVs
 
-A mission planner is a Ground Control Station which can be used by the pilot to obtain vehicle information during the flight. It can be used for setup, telemetry monitoring and control of the vehicle.
+A mission planner is a Ground Control Station which can be used by the pilot to obtain vehicle information during the flight. It can be used for setup, telemetry monitoring, simulation and control of the vehicle.
+
+### ArduPilot
+
+ArduPilot is an open-source autopilot system that supports many vehicle types: multi-copters, traditional helicopters, fixed wing aircrafts, boats, submarines etc. 
+
 
 
 ## References 
@@ -156,7 +178,6 @@ A mission planner is a Ground Control Station which can be used by the pilot to 
 ### IMU sensor
 * https://www.youtube.com/watch?v=M9lZ5Qy5S2s
 * https://www.unmannedsystemstechnology.com/expo/inertial-measurement-units-imu/#:~:text=An%20IMU%20(inertial%20measurement%20unit,to%20calculate%20position%20and%20velocity.
-* 
 
 #### Accelerometer
 * https://www.digikey.com/en/articles/using-an-accelerometer-for-inclination-sensing
@@ -188,4 +209,5 @@ A mission planner is a Ground Control Station which can be used by the pilot to 
 * https://robotics.stackexchange.com/questions/5053/why-does-the-pixhawk-have-2-imus#:~:text=This%20is%20because%20the%20chances,IMUs%20all%20of%20different%20brands
 * https://www.rcgroups.com/forums/showthread.php?1987175-Pixhawk-from-3D-Robotics-and-PX4/page483
 * https://github.com/3drobotics/Pixhawk_OS_Hardware/blob/master/FMUv3_REV_G/Schematic%20Print/Schematic%20Prints.PDF
+* https://docs.px4.io/main/en/flight_controller/cuav_pixhawk_v6x.html
 
