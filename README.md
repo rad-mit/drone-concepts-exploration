@@ -65,6 +65,27 @@ But INS provide accurate solutions for a short period of time. As the accelerati
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Yaw_Axis_Corrected.svg/375px-Yaw_Axis_Corrected.svg.png)
 
+### INS for UAVs
+
+The aim of using INS in an UAV would be to determine its position, velocity and altitude using only the onboard sensors. Some major components to be considered would be
+* inertial sensors like those in an IMU (acceleromter, gyro, magnetometer)
+* posititoning of the sensors on the UAV
+* a computational unit that can carry out operations like integration and filtration of the sensor data to obtain required values
+
+The integration of the IMU and a post-processing unit can be called an Altitude and Heading Reference System (AHRS). Data from the IMU is taken to this unit and altitude, heading is calculated. Kalman Filtering is used for the estimation.
+![alt text](https://www.uavnavigation.com/sites/default/files/inline-images/IMU%2BAHRS_SCH_2_0.png)
+
+## Sensor Fusion
+
+Combining sensor data obtained from different sources such that the data obtained is more accurate than any of the initial data that was received individually. Examples of sensor fusion algorithms would be the Kalman Filter, Extended Kalman Filter.
+
+### Kalman Filter
+The Kalman filer is an algorithm that uses a series of measurements obtained over time, containing statistical noise and inaccuracies and uses them to produce estimates of unknown variables. These estimates tend to be more accurate than those based on a single measurement alone. 
+
+The Kalman Filter deals with Gaussian Distribution curves, which is also its output. Once a measurement update is complete, the Kalman Filter outputs a unimodal Gaussian distribution which is its best guess of the parameter's true value. The mean of the Gaussian curve signifies the most probable occurence of the value and it lies at the centre.
+
+![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/6.png)
+
 ## References 
 
 ### Basics
@@ -91,7 +112,7 @@ But INS provide accurate solutions for a short period of time. As the accelerati
 * https://www.sciencedirect.com/topics/engineering/inertial-navigation-system
 * https://www.smlease.com/entries/mechanical-design-basics/what-is-the-difference-between-roll-pitch-yaw-aircraft-motions/
 * https://www.researchgate.net/figure/a-Pitch-yaw-and-roll-angles-of-an-aircraft-with-body-orientation-O-u-v-original_fig7_348803228
-* 
+* https://www.uavnavigation.com/company/blog/uav-navigation-depth-inertial-navigation
 
 ### Pixhawk
 * https://ardupilot.org/copter/docs/common-px4fmu-overview.html
