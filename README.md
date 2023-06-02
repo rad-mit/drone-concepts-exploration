@@ -77,7 +77,7 @@ The integration of the IMU and a post-processing unit can be called an Altitude 
 
 ## Sensor Fusion
 
-Combining sensor data obtained from different sources such that the data obtained is more accurate than any of the initial data that was received individually. Examples of sensor fusion algorithms would be the Kalman Filter, Extended Kalman Filter.
+Combining sensor data obtained from different sources such that the data obtained is more accurate than any of the initial data that was received individually. Examples of the most popularl used sensor fusion algorithms would be the Kalman Filter, Extended Kalman Filter.
 
 ### Kalman Filter
 
@@ -94,6 +94,27 @@ In the above image, the curve indicated as Prior Belief is the initial value at 
 ![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/5.png)
 
 The Kalman Filter uses the above formulae to calculate the posterior mean and variance, which are the updated values of the Prior Belief after taking the Measurement into consideration. These posterior values provide the state estimate of the Kalman Filter at that instant and is used as the Prior Belief for the next iteration. 
+
+But with this approach arises an issue. If the input to Kalman Filter is a linear function, it outputs a Gaussian curve. But a non-linear, non-Gaussian input leads to Non-Gaussian output. The Kalman Filter will not work for this non-linear Gaussian Distribution and we cannot calculate its mean and variance such that it is still meaningful. This is why the need for the Extended Kalman Filter arises.
+
+The Extended Kalman Filter simply adds a step to the preprocessing before giving input to the Kalman Filtering Estimation step. It approximates the non-linear function as a linear one using the Taylor Series Equation. 
+
+## Pixhawk
+
+Pixhawk is an independent open-hardware project providing autopilot designs that are readily available, low-cost and high-end in nature. 
+
+It basically is a series of dedicated flight controllers for UAVs. It brings together the different components needed to run open-source software for a drone into a box. It behaves like the Arduino of drones.
+
+Some advantages of using a Pixhawk controller include: 
+* Wide Software Support
+* Multiple hardware peripherals can be attached to the board
+* well-tested and reliable
+
+### Flight Controllers
+A flight controller behaves as the brain of the drone. It monitors and controls drone activity. 
+
+![alt text](https://docs.px4.io/main/assets/img/pixhawk4_hero_upright.74e8a52a.jpg)
+
 
 ## References 
 
@@ -122,6 +143,11 @@ The Kalman Filter uses the above formulae to calculate the posterior mean and va
 * https://www.smlease.com/entries/mechanical-design-basics/what-is-the-difference-between-roll-pitch-yaw-aircraft-motions/
 * https://www.researchgate.net/figure/a-Pitch-yaw-and-roll-angles-of-an-aircraft-with-body-orientation-O-u-v-original_fig7_348803228
 * https://www.uavnavigation.com/company/blog/uav-navigation-depth-inertial-navigation
+
+### Sensor Fusion
+#### Kalman Filter
+* Udacity's RObotics Software Engineer - Nanodegree Program
+* https://towardsdatascience.com/extended-kalman-filter-43e52b16757d
 
 ### Pixhawk
 * https://ardupilot.org/copter/docs/common-px4fmu-overview.html
