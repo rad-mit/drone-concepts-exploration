@@ -106,7 +106,7 @@ Pixhawk is an independent open-hardware project providing autopilot designs that
 It basically is a series of dedicated flight controllers for UAVs. It brings together the different components needed to run open-source software for a drone into a box. It behaves like the Arduino of drones.
 
 Some advantages of using a Pixhawk controller include: 
-* Wide Software Support
+* Wide Software SupportS
 * Multiple hardware peripherals can be attached to the board
 * well-tested and reliable
 
@@ -115,6 +115,11 @@ A flight controller behaves as the brain of the drone. It monitors and controls 
 
 ![alt text](https://docs.px4.io/main/assets/img/pixhawk4_hero_upright.74e8a52a.jpg)
 
+### IMUs in a Pixhawk Controller
+
+Generally a Pixhawk controller is mounted with two different IMU sensors, of different brands
+
+![alt text](px_imu.png)
 
 ## References 
 
