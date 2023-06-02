@@ -115,11 +115,38 @@ A flight controller behaves as the brain of the drone. It monitors and controls 
 
 ![alt text](https://docs.px4.io/main/assets/img/pixhawk4_hero_upright.74e8a52a.jpg)
 
-### IMUs in a Pixhawk Controller
+### Multiple IMUs in a Pixhawk Controller
 
-Generally a Pixhawk controller is mounted with two different IMU sensors, of different brands
+Generally a Pixhawk controller is mounted with two or more different IMU sensors, of different brands.
 
-![alt text](px_imu.png) Spec of the Holybro Pixhawk 4
+![alt text](px_imu.png)
+Spec of the Holybro Pixhawk 4
+
+This is done for some of the followng reasons:
+* Better Reliability: Sensors with similar functions but different build will give varied errors. Fusing data from such sensors can improve the reliablity of the final output obtained.
+* Safety and Backup: In case one of the sensors fails during flight, data from the other sensor can be used as a backup.
+* Power Consumption: If one of the sensors is a high-precision sensor, it may consume more power. So it can be switched on when required and switched off during low power.
+* Error Accumultion: Due to vibrations of the drone, data from sensors like accelerometers is affected and integration leads to buildup of error (or dc offset). It is helpful to use mutilple sensors in such cases and different sampling frequency in each.
+
+
+Data from the multiple IMUs is fused using EKF in Pixhawk flight controllers and used to estimate its position.
+
+There is also some research into the use of mutliple IMUs and seemingly redundant data to improve the position estimation in GPS-denied INS (aka dead-reckoning navigation).
+
+* https://link.springer.com/article/10.1007/s12206-022-1216-1
+This research paper proposes a method to integrate signals from multiple accelerometers with different resolutions and reduce the error using a weighted average.
+
+* https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9686719
+A presentation of multiple variants of the Kalman Filtering technique to use measurements from multiple IMUs. It builds upon the common standard, EKF applied to IMU measurements.
+
+* https://www.researchgate.net/publication/333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
+This research paper presents the quantitative improvement of the latiitude, longitude and altitude values with the use of multiple IMU sensors in a GPS-denied environment.
+
+
+## Mission Planner for UAVs
+
+A mission planner is a Ground Control Station which can be used by the pilot to obtain vehicle information during the flight. It can be used for setup, telemetry monitoring and control of the vehicle.
+
 
 ## References 
 
@@ -151,7 +178,7 @@ Generally a Pixhawk controller is mounted with two different IMU sensors, of dif
 
 ### Sensor Fusion
 #### Kalman Filter
-* Udacity's RObotics Software Engineer - Nanodegree Program
+* Udacity's Robotics Software Engineer - Nanodegree Program
 * https://towardsdatascience.com/extended-kalman-filter-43e52b16757d
 
 ### Pixhawk
