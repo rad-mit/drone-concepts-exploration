@@ -119,7 +119,7 @@ A flight controller behaves as the brain of the drone. It monitors and controls 
 
 Generally a Pixhawk controller is mounted with two different IMU sensors, of different brands
 
-![alt text](px_imu.png)
+![alt text](px_imu.png) Spec of the Holybro Pixhawk 4
 
 ## References 
 
@@ -155,6 +155,7 @@ Generally a Pixhawk controller is mounted with two different IMU sensors, of dif
 * https://towardsdatascience.com/extended-kalman-filter-43e52b16757d
 
 ### Pixhawk
+* https://docs.px4.io/main/en/flight_controller/pixhawk4.html
 * https://ardupilot.org/copter/docs/common-px4fmu-overview.html
 * https://docs.px4.io/main/en/flight_controller/pixhawk_series.html
 * https://robotics.stackexchange.com/questions/5053/why-does-the-pixhawk-have-2-imus#:~:text=This%20is%20because%20the%20chances,IMUs%20all%20of%20different%20brands
