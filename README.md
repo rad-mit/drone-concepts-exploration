@@ -69,10 +69,11 @@ But INS provide accurate solutions for a short period of time. As the accelerati
 
 The aim of using INS in an UAV would be to determine its position, velocity and altitude using only the onboard sensors. Some major components to be considered would be
 * inertial sensors like those in an IMU (acceleromter, gyro, magnetometer)
-* posititoning of the sensors on the UAV
+* positioning of the sensors on the UAV
 * a computational unit that can carry out operations like integration and filtration of the sensor data to obtain required values
 
 The integration of the IMU and a post-processing unit can be called an Altitude and Heading Reference System (AHRS). Data from the IMU is taken to this unit and altitude, heading is calculated. Kalman Filtering is used for the estimation.
+
 ![alt text](https://www.uavnavigation.com/sites/default/files/inline-images/IMU%2BAHRS_SCH_2_0.png)
 
 ## Sensor Fusion
@@ -97,7 +98,7 @@ The Kalman Filter uses the above formulae to calculate the posterior mean and va
 
 But with this approach arises an issue. If the input to Kalman Filter is a linear function, it outputs a Gaussian curve. But a non-linear, non-Gaussian input leads to Non-Gaussian output. The Kalman Filter will not work for this non-linear Gaussian Distribution and we cannot calculate its mean and variance such that it is still meaningful. This is why the need for the Extended Kalman Filter arises.
 
-The Extended Kalman Filter simply adds a step to the preprocessing before giving input to the Kalman Filtering Estimation step. It approximates the non-linear function as a linear one using the Taylor Series Equation. 
+The Extended Kalman Filter simply adds a step to the preprocessing before giving input to the Kalman Filtering Estimation step. It approximates the non-linear function as a linear function using the Taylor Series Equation. 
 
 ## Pixhawk
 
@@ -108,9 +109,9 @@ AN autopilot is a system with the capabiltiy of controlling roll, pitch, yaw of 
 It basically is a series of dedicated flight controllers for UAVs. It brings together the different components needed to run open-source software for a drone into a box. It behaves like the Arduino of drones.
 
 Some advantages of using a Pixhawk controller include: 
-* Wide Software SupportS
+* Wide Software Support
 * Multiple hardware peripherals can be attached to the board
-* well-tested and reliable
+* Well-tested and reliable
 
 ### Flight Controllers
 A flight controller behaves as the brain of the drone. It monitors and controls drone activity. 
@@ -144,9 +145,8 @@ This research paper proposes a method to integrate signals from multiple acceler
 
 A presentation of multiple variants of the Kalman Filtering technique to use measurements from multiple IMUs. It builds upon the common standard, EKF applied to IMU measurements.
 
-* https://www.researchgate.net/publication/
+* https://www.researchgate.net/publication/333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
 
-333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
 This research paper presents the quantitative improvement of the latiitude, longitude and altitude values with the use of multiple IMU sensors in a GPS-denied environment.
 
 ### Processors and sensors - CUAV Pixhawk V6X
@@ -171,9 +171,32 @@ A mission planner is a Ground Control Station which can be used by the pilot to 
 
 ### ArduPilot
 
-ArduPilot is an open-source autopilot system that supports many vehicle types: multi-copters, traditional helicopters, fixed wing aircrafts, boats, submarines etc. 
+Written in Python and C++, ArduPilot is an open-source autopilot system that supports many vehicle types: multi-copters, traditional helicopters, fixed wing aircrafts, boats, submarines etc. 
 
+It has multiple components like the hardware which consists of the
+controller, peripherals and output devices;
+firmware, the code running on the controller; 
+software, interface to the controller or the Ground Control Station;
+Ground Station, land-based communication for control system for communication between the pilot and vehicle;
+Mission Planner, full-featured GCS supported by ArduPilot
 
+## Distributed IMU system
+
+Previously, we have explored the use of multiple IMU sensors and fusion of data from them to improve the output. A distributed IMU system also uses multiple inertial sensors for the same purpose but here, the inertial sensors are mounted on different surfaces and in different spatial orientations. 
+
+Research has been done in this area and some relavant publications are as follows:
+
+* https://cas.mines-paristech.fr/~petit/papers/cdc07/DV.pdf
+
+Only multiple magnetometers are used in addition to an IMU module in a GPS-denied environment. The research exploits the magnetic field disturbances generally observed in outdoor settings.
+
+* https://www.sbir.gov/sbirsearch/detail/1670191
+
+Application of a scalable and distributed IMU system in space robotics and the CubeSat. Multiple sensors are placed as required with the constraint that each axis is measured by atleast one accelerometer and gyroscope. 
+
+* https://www.osti.gov/servlets/purl/1631095
+
+A project involving development of a gyro-free IMU module called the Distributed Accelerometer IMU. The aim is to eliminate the use of heavy, bulky and error-prone gyroscopes and use 6-axis accelerometer scheme. It is essentially a cube-like structure, with a sensor at each surface, therefore 6 accelerometers.
 
 ## References 
 
