@@ -80,11 +80,18 @@ The integration of the IMU and a post-processing unit can be called an Altitude 
 Combining sensor data obtained from different sources such that the data obtained is more accurate than any of the initial data that was received individually. Examples of sensor fusion algorithms would be the Kalman Filter, Extended Kalman Filter.
 
 ### Kalman Filter
+
 The Kalman filer is an algorithm that uses a series of measurements obtained over time, containing statistical noise and inaccuracies and uses them to produce estimates of unknown variables. These estimates tend to be more accurate than those based on a single measurement alone. 
 
 The Kalman Filter deals with Gaussian Distribution curves, which is also its output. Once a measurement update is complete, the Kalman Filter outputs a unimodal Gaussian distribution which is its best guess of the parameter's true value. The mean of the Gaussian curve signifies the most probable occurence of the value and it lies at the centre.
 
 ![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/6.png)
+
+In the above image, the curve indicated as Prior Belief is the initial value at the beginning of the process and the previous state estimate in subsequent iterations. The curve marked as Measurement shows the value of the parameter as measured by the sensor, which is assumed to be noisy and inaccurate.
+
+![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/5.png)
+
+The Kalman Filter uses the above formulae to calculate the posterior mean and variance, which are the updated values of the Prior Belief after taking the Measurement into consideration. These posterior values provide the state estimate of the Kalman Filter at that instant and is used as the Prior Belief for the next iteration. 
 
 ## References 
 
