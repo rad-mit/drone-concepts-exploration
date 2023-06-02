@@ -149,14 +149,19 @@ A presentation of multiple variants of the Kalman Filtering technique to use mea
 333798649_Study_of_Utilizing_Multiple_IMUs_for_Inertial_Navigation_Systems_Without_GPS_Aid
 This research paper presents the quantitative improvement of the latiitude, longitude and altitude values with the use of multiple IMU sensors in a GPS-denied environment.
 
-### Specs - CUAV Pixhawk V6X
+### Processors and sensors - CUAV Pixhawk V6X
 
-Some basic hardware specs of latest Pixhawk flight controller, CUAV Pixhawk V6X:
+Some basic hardware components and specs of latest Pixhawk flight controller, CUAV Pixhawk V6X:
 * FMU Processor - 32-bit Arm Cortex-M7, 480MHz, 2MB flash memory, 1MB RAM
-    * Handles sensor data processing, communication interfaces
-* IO Processor - 
-    * 
+    * Handles sensor data processing, communication with hardware peripherals
+* IO Processor - 32-bit Arm Cortex-M3, 72Mhz, 20KB SRAM
+    * Handles ground communication, actuators control
+* Onboard sensors
+    * 3 x accel/gyro modules (each different)
+    * Magnetometer
+    * Barometer - used to measure atmospheric pressure and altitude estimation
 
+Source: https://docs.px4.io/main/en/flight_controller/cuav_pixhawk_v6x.html
 
 ![alt text](https://docs.px4.io/main/assets/img/pixhawk_v6x.48f2ab45.jpg)
 
