@@ -89,6 +89,8 @@ The Kalman Filter deals with Gaussian Distribution curves, which is also its out
 
 In the above image, the curve indicated as Prior Belief is the initial value at the beginning of the process and the previous state estimate in subsequent iterations. The curve marked as Measurement shows the value of the parameter as measured by the sensor, which is assumed to be noisy and inaccurate.
 
+![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/4.png)
+
 ![alt text](https://github.com/YashKSahu/Kalman-Filter/raw/main/img/5.png)
 
 The Kalman Filter uses the above formulae to calculate the posterior mean and variance, which are the updated values of the Prior Belief after taking the Measurement into consideration. These posterior values provide the state estimate of the Kalman Filter at that instant and is used as the Prior Belief for the next iteration. 
